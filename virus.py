@@ -6,6 +6,8 @@ import webbrowser
 import os
 import smtplib
 import random
+import time
+
 
 engine = pyttsx3.init('sapi5')
 voices = engine.getProperty('voices')
@@ -45,7 +47,7 @@ def takeCommand():
 
 
     except Exception as e:
-        #print(e)
+        
         print("SORRY BRO CAN YOU REPEAT PLEASE..") 
         return "None"
     return query
@@ -95,13 +97,17 @@ if __name__ == "__main__":
            webbrowser.open("https:\\mail.google.com\\mail\\u\\0\\#inbox")        
 
       elif 'instagram' in query:
-          webbrowser.open("instagram.com")      
+          webbrowser.open("instagram.com")
+
+      elif 'linkedin' in query:
+          webbrowser.open("https:\\www.linkedin.com\\feed\\")
+                     
 
       elif 'whatsapp' in query:
            webbrowser.open("web.whatsapp.com")          
 
       elif 'play' in query:
-          music_dir = 'D:\\dj songs'
+          music_dir = 'D:\\dj songs'   
           songs = os.listdir(music_dir)
           s_list = random.choice(songs)   
           print(songs)
@@ -111,8 +117,10 @@ if __name__ == "__main__":
           strTime = datetime.datetime.now().strftime("%H:%M:%S")
           speak(f"bro its {strTime}")
           print("TIME : ", strTime)    
+         
+          
 
-      elif 'code' in query:
+      elif 'visual' in query:
           codePath = "C:\\Users\\batha\\AppData\\Local\\Programs\\Microsoft VS Code\\Code.exe"   
           os.startfile(codePath)
 
@@ -149,15 +157,75 @@ if __name__ == "__main__":
       elif 'how are you' in query:
           speak("m good. how are u bro")    
 
-      elif 'good' in query:
-          speak("so tell me how was your day ?") 
-          speak("what would you like to do ?")      
-   
-      elif 'bhai' in query:
-          speak("ok !  LOVE YOU")       
+      
+      elif 'game' in query :
+          print("Stone Paper Scissors: VIRUS")
+          time.sleep(1.0)
+          print('You have 10 Chances')
+          time.sleep(1.0)
+          print('Start')
+          time.sleep(2.0)
 
-        
 
+          level = 11
+          onLevel = 0
+          score = 0
+          opponentScore = 0
+          while level >= 1 :
+              level = level - 1
+              onLevel = onLevel + 1
+              if level == 0 and score == opponentScore:
+                  print("Result: Tie")
+
+
+              elif level == 0 and score > opponentScore:
+                  print("Result: You win")
+
+
+              elif level == 0 and score < opponentScore:
+                  print("Result: You loose")
+
+
+              else:
+                   randChoice = ["STONE", "PAPER", "SCISSOR"]
+                   opponentChoice = random.choice(randChoice)
+                   print("Level: " + str(onLevel))
+                   yourChoice = input('Choose STONE  PAPER or SCISSOR: ')
+                   yourChoice = yourChoice.upper()
+
+                   if yourChoice == opponentChoice:
+                      print("Your Choice: {0} Opponent Choice: {1}".format(yourChoice, opponentChoice))
+                      print("Your Score: " + str(score) + " || Opponent Score: " + str(opponentScore) + "\n")
+
+                   elif yourChoice == "STONE" and opponentChoice == "SCISSOR":
+                      score += 1
+                      print("Your Choice: {0} Opponent Choice: {1}".format(yourChoice, opponentChoice))
+                      print("Your Score: {0} || Opponent Score: {1}\n".format(str(score), str(opponentScore)))
+                    
+
+                   elif yourChoice == "PAPER" and opponentChoice == "STONE":
+                      score += 1
+                      print("Your Choice: {0} Opponent Choice: {1}".format(yourChoice, opponentChoice))
+                      print("Your Score: {0} || Opponent Score: {1}\n".format(str(score), str(opponentScore)))
+
+                   elif yourChoice == "SCISSOR" and opponentChoice == "PAPER":
+                      score += 1
+                      print("Your Choice: {0} Opponent Choice: {1}".format(yourChoice, opponentChoice))
+                      print("Your Score: {0} || Opponent Score: {1}\n".format(str(score), str(opponentScore)))
+
+                   elif yourChoice not in randChoice:
+                      print("Invalid input")
+
+                   else:
+                      opponentScore += 1
+                      print("Your Choice: {0} Opponent Choice: {1}".format(yourChoice, opponentChoice))
+                      print("Your Score: {0} || Opponent Score: {1}\n".format(str(score), str(opponentScore)))
+    
+      elif 'source' in query:
+          speak("link in description")
+
+         
+      
 
 
 
